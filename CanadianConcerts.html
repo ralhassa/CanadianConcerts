@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Canadian Concerts database</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%); /* make all photos black and white */ 
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 40px 50px;
+  }
+  .nav-tabs li a {
+      color: #777;
+  }
+  #googleMap {
+      width: 100%;
+      height: 400px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+  }  
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+  }
+  footer a {
+      color: #f5f5f5;
+  }
+  footer a:hover {
+      color: #777;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+  </style>
+</head>
+
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">HOME</a></li>
+        <li><a href="#About">ABOUT</a></li>
+        <li><a href="#Information">INFORMATION</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="jb.jpg"  width="1200" height="700">
+        <div class="carousel-caption">
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src="concert1.jpg" width="1200" height="700">    
+      </div>
+    
+      <div class="item">
+        <img src="concert2.jpg" width="1200" height="700">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (The Band Section) -->
+<div id="About" class="container text-center">
+  <h3>Canadian Concerts Database</h3>
+  
+  <p>Originally, our group considered making an application geared towards customers interested in attending concerts. After much thought, we determined that there were already so many applications like this already on the market. After much deliberation, we decided to shift our focus from customers to concert workers and create a more behind-the-scenes type of application. Our application will display information like performer name, band name, performer id, venue, address, V.I.P available, venue capacity, number of employees working, parking available etc. This information will help employees plan and manage their concerts effectively. Our goal for our application is to help make concerts run as smoothly as possible. We know how much we enjoy attending concerts, and we hope that our application will aid in making concerts as awesome as possible.
+
+</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Claire Pannolino</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="ss2.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>Management Engineering student</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Kaitlyn Masseo</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="katie.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>Management Engineering student</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Reem Al-hassan</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="reem.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>Management Engineering student</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Information Section) -->
+<div id="Information" class="bg-1">
+  <div class="container">
+    <h3 class="text-center">Information</h3>
+<div class="query1">
+<p class="text-center">Performer Information</p>
+<p> Select a genre of music for information about the most popular performers of that genre (based off Twitter popularity)</p>
+<!--select a genre dropdown-->
+<p> Select Genre </p>
+<form action="handle5.php" method="get">
+  <select name='genre'>
+  <option> </option>
+  <option value="Country">Country</option> 
+  <option value="Electronic">Electronic</option>
+  <option value="Heavy Metal">Heavy Metal</option>
+  <option value="Hip Hop">Hip Hop</option>
+  <option value="Indie">Indie</option>
+  <option value="Pop">Pop</option>
+  <option value="Rock">Rock</option>
+  
+</select> <br>
+<input type="submit" name="submit">
+</form>
+</div>
+<br>
+
+    
+
+<!-- query 1: shows a list of concerts according to a given province-->
+<div class="query2">
+<p class="text-center">Concert Information</p>
+<p> Select a province for information about artists performing there</p>
+
+<!-- select a  province dropdown-->
+<p> Select Province </p>
+<form action="handle1.php" method="get">
+  <select name='province'>
+  <option> </option>
+  <option value="Alberta"> Alberta</option> 
+  <option value="British Columbia"> British Columbia</option>
+  <option value="Manitoba"> Manitoba</option>
+  <option value="New Brunswick"> New Brunswick</option>
+  <option value="Newfoundland"> Newfoundland</option>
+  <option value="Nova Scotia"> Nova Scotia</option>
+  <option value="Ontario"> Ontario</option>
+  <option value="Prince Edward Island"> Prince Edward Island</option>
+  <option value="Quebec"> Quebec</option>
+  <option value="Saskatchewan"> Saskatchewan</option>
+</select> <br>
+<input type="submit" name="submit">
+</form>
+</div>
+<br>
+
+<!-- query 2: Shows a list of Performers that have > 10,000,000 twitter followers within a given province-->
+<div class="query2.0">
+<p> Click the button if you would like to view the concerts that require an above average number of staff to work </p>
+
+<form action="handle4.php" method="get">
+  <input type="submit" name="submit" value="Click Here">
+
+</form>
+</div>
+<br>
+<br>
+
+<!--query 3: given a band, list all memebers and the instruments they play.-->
+
+<div class="query3">
+<p class="text-center">Band Information</p>
+<p> Select a band for information about band members and the instruments they play</p>
+<!-- select a band dropdown-->
+<p> Select Band</p>
+<form action="handle2.php" method="get">
+  <select name='bandname'>
+  <option> </option>
+  <option value="Imagine Dragons"> Imagine Dragons</option> 
+  <option value="One Direction"> One Direction</option>
+  <option value="Coldplay"> Coldplay</option>
+  <option value="Twenty One Pilots"> Twenty One Pilots</option>
+  <option value="DVBBS"> DVBBS</option>
+  <option value="Fall Out Boy"> Fall Out Boy</option>
+  <option value="Paramore"> Paramore</option>
+  <option value="Blink 182"> Blink 182</option>
+  <option value="5 Seconds of Summer"> 5 Seconds of Summer</option>
+  <option value="Metallica"> Metallica</option>
+  <option value="U2"> U2</option>
+  <option value="Lady Antebellum"> Lady Antebellum</option>
+  <option value="The Chainsmokers"> The Chainsmokers</option>
+  <option value="Arctic Monkeys"> Arctic Monkeys</option>
+</select> <br>
+<input type="submit" name="submit">
+</form>
+</div>
+<br>
+<br>
+
+<!--query 4: Counting the number of Concerts at a given Venue.-->
+
+<div class="query4">
+<p class="text-center">Venue Information</p>
+<p> Select a venue for information about the number of concerts hosted there</p>
+
+<!-- select a venue dropdown-->
+<p> Select Venue here</p>
+<form action="handle3.php" method="get">
+  <select name='venue_count'>
+  <option> </option>
+  <option value="Air Canada Centre"> Air Canada Centre</option> 
+  <option value="Rogers Centre"> Rogers Centre</option>
+  <option value="Molson Canadian Amphitheatre"> Molson Canadian Amphitheatre</optio>
+  <option value="Bell Centre"> Bell Centre</option>
+  <option value="Canadian Tire Centre"> Canadian Tire Centre</option>
+  <option value="Downsview Place"> Downsview Place</option>
+  <option value="Burl's Creek Event Grounds"> Burl's Creek Event Grounds</option>
+  <option value="Tim Stadium"> Tim Stadium</option>
+  <option value="MOD Club"> MOD Club</option>
+  <option value="Sandy Centre"> Sandy Centre</option>
+  <option value="Live Stadium"> Live Stadium</option>
+  <option value="Mills Stage"> Mills Stage</option>
+  <option value="Honey Centre"> Honey Centre</option>
+  <option value="Longo's Park"> Longo's Park</option>
+  <option value="Reed Park"> Reed Park</option>
+  <option value="Mills Stage"> Mills Stage</option>
+  <option value="Davidson Centre"> Davidson Centre</option>
+  <option value="The Maddison"> The Maddison</option>
+</select> <br>
+<input type="submit" name="submit">
+</form>
+</div>
+<br>
+<br>
+
+<!-- update function: allows the user to updat the instrument played by a specific performer-->
+<div class="update">
+<p class="text-center">Update Section</p>
+<p> Select a performer followed by the updated instrument they play</p>
+
+<form action="update.php" method="get">
+
+<!-- select a performer dropdown-->
+<p> Select a performer </p>
+<select name="performer">
+<option></option>
+<option value="Drake">Drake</option> 
+<option value="Ed Sheeran">Ed Sheeran</option>
+<option value="Big Sean">Big Sean</option> 
+<option value="Shawn Mendes">Sean Mendes</option> 
+<option value="Alessia Cara">Alessia Cara</option>
+<option value="Bruno Mars">Bruno Mars</option> 
+<option value="Sam Hunt">Sam Hunt</option>
+<option value="James Arthur">James Arthur</option> 
+<option value="Taylor Swift">Taylor Swift</option> 
+<option value="Justin Bieber">Justin Bieber</option>
+<option value="Justin Timberlake">Justin Timberlake</option> 
+<option value="Katy Perry">Katy Perry</option>
+<option value="Lady Gaga">Lady Gaga</option> 
+<option value="Calvin Harris">Calvin Harris</option> 
+<option value="Luke Bryan">Luke Bryan</option>
+<option value="Keith Urban">Keith Urban</option> 
+<option value="Travis Scott">Travis Scott</option>
+<option value="Chris Brown">Chris Brown</option> 
+<option value="Kanye West">Kanye</option> 
+<option value="Ariana Grande">Ariana Grande</option>
+<option value="J Cole">J Cole</option> 
+<option value="Jason Derulo">Jason Derulo</option>
+<option value="Hailee Steinfeld">Hailee Steinfeld</option> 
+<option value="Thomas Rhett">Thomas Rhett</option> 
+<option value="Miley Cyrus">Miley Cyrus</option>
+<option value="Jason Aldean">Jason Aldean</option> 
+<option value="Dierks Bentley">Dierks Bentley</option>
+<option value="Selena Gomez">Selena Gomez</option> 
+<option value="John Legend">John Legend</option> 
+<option value="Blake Shelton">Blake Shelton</option>
+<option value="Martin Garrix">Martin Garrix</option> 
+<option value="Dustin Lynch">Dustin Lynch</option>
+<option value="Lorde">Lorde</option> 
+<option value="Post Malone">Post Malone</option> 
+<option value="Future">Future</option>
+<option value="Kendrick Lamar">Kendrick Lamar</option> 
+<option value="DJ Khaled">DJ Khaled</option>
+<option value="Zedd">Zedd</option> 
+<option value="Zayn Malik">Zayn Malik</option> 
+<option value="Dan Reynolds">Dan Reynolds</option>
+<option value="Wayne Sermon">Wayne Sermon</option>
+<option value="Ben McKee">Ben McKee</option> 
+<option value="Daniel Platzman">Daniel Platzman</option> 
+<option value="Niall Horan">Niall Horan</option>
+<option value="Harry Styles">Harry Styles</option> 
+<option value="Louis Tomlinson">Louis Tomlinson</option>
+<option value="Liam Payne">Liam Payne</option> 
+<option value="Guy Berryman">Guy Berryman</option> 
+<option value="Jonny Buckland">Jonny Buckland</option>
+<option value="Nick O’Malley">Nick O’Malley</option> 
+<option value="Jamie Cook">Jamie Cook</option>
+<option value="Matt Helders">Matt Helders</option>
+<option value="Alex Turner">Alex Turner</option>
+<option value="Alex Pall">Alex Pall</option>
+<option value="Andrew Taggart">Andrew Taggart</option> 
+<option value="Charles Kelley">Charles Kelley</option>
+<option value="Dave Haywood ">Dave Haywood</option>
+<option value="Hillary Scott">Hillary Scott</option>
+<option value="Larry Mullen Jr">Larry Mullen Jr</option>
+<option value="Adam Clayton">Adam Clayton</option> 
+<option value="The Edge">The Edge</option>
+<option value="Bono">Bono</option>
+<option value="Robert Trujillo">Robert Trujillo</option>
+<option value="Kirk Hammett">Kirk Hammett</option>
+<option value="Lars Ulrich">Lars Ulrich</option> 
+<option value="James Hetfield">James Hetfield</option>
+<option value="Ashon Irwin">Ashton Irwin</option>
+<option value="Calum Hood">Calum Hood</option>
+<option value="Michael Clifford">Michael Clifford</option>
+<option value="Luke Hemmings">Luke Hemmings</option> 
+<option value="Matt Skiba">Matt Skiba</option>
+<option value="Travis Barker">Travis Barker</option>
+<option value="Mark Hoppus">Mark Hoppus</option>
+<option value="Taylor York">Taylor York</option>
+<option value="Zac Farro">Zac Farro</option> 
+<option value="Hayley Williams">Hayley Williams</option>
+<option value="Andy Hurley">Andy Hurley</option>
+<option value="Pete Wentz">Pete Wentz</option>
+<option value="Joe Trohman">Joe Trohman</option>
+<option value="Patrick Stump">Patrick Stump</option> 
+<option value="Christopher van den Hoef">Christopher van den Hoef</option>
+<option value="Alexandre van den Hoef">Alexandre van den Hoef</option>
+<option value="Josh Dun ">Josh Dun</option>
+<option value="Tyler Joseph">Tyler Joseph</option>
+<option value="Chris Martin">Chris Martin</option> 
+<option value="Will Champion">Will Champion</option>
+  
+</select><br>
+<br>
+<!-- selecting an instrument dropdown-->
+<p> Select instrument</p>
+<select name='instrument'>
+  <option> </option>
+  <option value="drums">Drums</option> 
+  <option value="electronic DJ">Electronic DJ</option>
+  <option value="guitar">Guitar</option>
+  <option value="keyboard">Keyboard</option>
+  <option value="vocals"> Vocals</option>
+  </select>
+<br>
+
+<input type="submit" name="submit">
+</form>
+
+</div>
+<br>
+<br>
+<br>
+
+  
+<!-- Container (Contact Section) -->
+<div id="contact">
+  <h3 class="text-center">Contact</h3>
+  <br>
+ 
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Please enter your questions below.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Toronto, Canada</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +1 (519) 743 2839</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: ralhassa@edu.uwaterloo.ca</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <!--<p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> -->
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+</body>
+</html>
+
